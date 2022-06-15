@@ -14,15 +14,18 @@
         <div class="row d-flex justify-content-center">
             <div class="col-10">
                 <h2 class="h1 text-center text-success mt-5">Create Deep Link Teams App</h2>
+                <hr class="border-success border-3 opacity-75">
                 <form>
                     <div class="mb-3">
                         <label class="form-label" for="appId">AppId</label>
-                        <input type="text" class="form-control" id="appId" placeholder="Get from App Studio">
+                        <input type="text" class="form-control" id="appId"
+                            placeholder="Get from App Studio or Manifest file">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label" for="entityId">EntityId</label>
-                        <input type="text" class="form-control" id="entityId" placeholder="Get from Config Tab">
+                        <input type="text" class="form-control" id="entityId"
+                            placeholder="Get from Config Tab or Manifest file">
                     </div>
 
                     <div class="mb-3">
@@ -47,6 +50,7 @@
                             placeholder="Enter one-time URL here"></textarea>
                     </div>
                 </form>
+                <br>
                 <div class="col-10">
                     <h4>Encoded Url</h4>
                     <button onclick="copy(urlElement); alert('Copied');" class="btn btn-success">Copy</button>

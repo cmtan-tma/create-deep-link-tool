@@ -87,7 +87,7 @@
                 webUrl: "",
                 label: "",
                 context: {
-                    channelId: "null",
+                    channelId: "",
                     subEntityId: ""
                 }
             }
@@ -97,7 +97,19 @@
         rawElement = document.getElementById("rawUrl");
 
         function url2Text(encode) {
-            return `${url.protocol}://${url.domain}/${url.appId}/${url.entityId}/?webUrl=${encode(url.parameters.webUrl)}&label=${encode(url.parameters.label)}&context=${encode(JSON.stringify(url.parameters.context))}`
+            let deepLink = `${url.protocol}://${url.domain}/${url.appId}/${url.entityId}/?webUrl=${encode(url.parameters.webUrl)}&label=${encode(url.parameters.label)}`
+
+            if (url.parameters.context.channelId.trim() !== "" || url.parameters.context.subEntityId.trim() !== "") {
+                const urlContext = url.parameters.context
+                const contextDeepLink = {}
+                for (let key in urlContext) {
+                    if (urlContext[key]) contextDeepLink[key] = urlContext[key]
+                }
+
+                deepLink += `&context=${encode(JSON.stringify(contextDeepLink))}`
+            }
+
+            return deepLink
         }
 
         function encode(text) {
